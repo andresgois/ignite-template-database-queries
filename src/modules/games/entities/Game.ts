@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Order } from '../../orders/entities/Order';
 
 import { User } from '../../users/entities/User';
 
@@ -19,6 +20,9 @@ export class Game {
 
   @ManyToMany(() => User, (user) => user.games)
   users: User[];
+
+  @ManyToMany(() => Order, (order) => order.games)
+  orders: Order[];
 
   @CreateDateColumn()
   created_at: Date;
